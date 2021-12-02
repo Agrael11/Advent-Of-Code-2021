@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace AdventOfCode.Day1.Puzzle1
+namespace AdventOfCode.Day1.Puzzle2
 {
     class Program
     {
