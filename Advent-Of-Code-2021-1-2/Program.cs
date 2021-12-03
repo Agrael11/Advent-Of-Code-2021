@@ -4,7 +4,7 @@ using System.IO;
 namespace AdventOfCode.Day1.Puzzle2
 {
     /// <summary>
-    /// Main Class for Day 1 - Challange 1 of Advent of Code 2021
+    /// Main Class for Day 1 - Challange 2 of Advent of Code 2021
     /// </summary>
     class Program
     {
