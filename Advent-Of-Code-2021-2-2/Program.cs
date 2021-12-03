@@ -3,6 +3,9 @@ using System.IO;
 
 namespace AdventOfCode.Day2.Puzzle2
 {
+    /// <summary>
+    /// Main Class for Day 2 - Challange 2 of Advent of Code 2021
+    /// </summary>
     class Program
     {
         static void Main()
