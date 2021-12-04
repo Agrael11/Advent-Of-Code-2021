@@ -14,7 +14,7 @@ namespace AdventOfCode.Day3.Puzzle1
             string[] inputData;
             using (StreamReader sr = new("inputData.txt"))
             {
-                inputData = sr.ReadToEnd().TrimEnd('\n').Split('\n');
+                inputData = sr.ReadToEnd().Replace("\r", "").TrimEnd('\n').Split('\n');
             }
 
             //Initial definition of gammaRate (starting at 0)

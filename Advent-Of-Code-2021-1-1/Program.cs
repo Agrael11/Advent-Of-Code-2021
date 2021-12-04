@@ -14,7 +14,7 @@ namespace AdventOfCode.Day1.Puzzle1
             string[] inputData;
             using (StreamReader sr = new("inputData.txt"))
             {
-                inputData = sr.ReadToEnd().TrimEnd('\n').Split('\n');
+                inputData = sr.ReadToEnd().Replace("\r","").TrimEnd('\n').Split('\n');
             }
             
             //Defines Previous Number as first number in the list, and counter of increased items.

@@ -14,7 +14,7 @@ namespace AdventOfCode.Day2.Puzzle1
             string[] inputData;
             using (StreamReader sr = new("inputData.txt"))
             {
-                inputData = sr.ReadToEnd().TrimEnd('\n').Split('\n');
+                inputData = sr.ReadToEnd().Replace("\r", "").TrimEnd('\n').Split('\n');
             }
 
             //Defines horizontal position and depth of submarine, both starting at 0;

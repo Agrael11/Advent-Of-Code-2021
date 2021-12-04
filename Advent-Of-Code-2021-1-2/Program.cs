@@ -14,7 +14,7 @@ namespace AdventOfCode.Day1.Puzzle2
             string[] inputData;
             using (StreamReader sr = new("inputData.txt"))
             {
-                inputData = sr.ReadToEnd().TrimEnd('\n').Split('\n');
+                inputData = sr.ReadToEnd().Replace("\r", "").TrimEnd('\n').Split('\n');
             }
 
             //Defines Previous Sum as Sum of first three element on the list, and counter of increased sums.

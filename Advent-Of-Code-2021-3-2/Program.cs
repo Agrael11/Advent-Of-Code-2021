@@ -14,7 +14,7 @@ namespace AdventOfCode.Day3.Puzzle2
             List<string> inputData = new();
             using (StreamReader sr = new("inputData.txt"))
             {
-                inputData = sr.ReadToEnd().TrimEnd('\n').Split('\n').ToList();
+                inputData = sr.ReadToEnd().Replace("\r", "").TrimEnd('\n').Split('\n').ToList();
             }
 
             //Initialize oxygen and CO2 rating values to 0
