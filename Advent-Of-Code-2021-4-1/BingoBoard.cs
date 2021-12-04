@@ -1,101 +1,104 @@
-﻿/// <summary>
-/// Class taking care of Bingo Board related stuff
-/// </summary>
-class BingoBoard
+﻿namespace AdventOfCode.Day4.Puzzle1
 {
-    //Set table of numbers and their checked values
-    private readonly (int number, bool status)[,] boardNumbersAndStatus;
-
     /// <summary>
-    /// Initalizates variables and parses input at starting index
+    /// Class taking care of Bingo Board related stuff
     /// </summary>
-    /// <param name="data"></param>
-    /// <param name="startIndex"></param>
-    public BingoBoard(List<string> data, int startIndex)
+    class BingoBoard
     {
-        boardNumbersAndStatus = new (int number, bool status)[5, 5];
-        for (int y = 0; y < 5; y++)
-        {
-            string[] numbers = data[startIndex + y].Replace("  ", " ").TrimStart(' ').Split(' ');
-            for (int x = 0; x < 5; x++)
-            {
-                boardNumbersAndStatus[x, y].number = int.Parse(numbers[x]);
-                boardNumbersAndStatus[x, y].status = false;
-            }
-        }
-    }
+        //Set table of numbers and their checked values
+        private readonly (int number, bool status)[,] boardNumbersAndStatus;
 
-    /// <summary>
-    /// Checks if number is same and sets Status
-    /// </summary>
-    /// <param name="number"></param>
-    public void CheckIfNumber(int number)
-    {
-        for (int y = 0; y < 5; y++)
+        /// <summary>
+        /// Initalizates variables and parses input at starting index
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="startIndex"></param>
+        public BingoBoard(List<string> data, int startIndex)
         {
-            for (int x = 0; x < 5; x++)
-            {
-                if (boardNumbersAndStatus[x, y].number == number) boardNumbersAndStatus[x, y].status = true;
-            }
-        }
-    }
-
-    /// <summary>
-    /// Checks rows and columns for bingo
-    /// </summary>
-    /// <returns></returns>
-    public bool BingoCheck()
-    {
-        for (int x = 0; x < 5; x++)
-        {
-            int numbers = 0;
+            boardNumbersAndStatus = new (int number, bool status)[5, 5];
             for (int y = 0; y < 5; y++)
             {
-                if (boardNumbersAndStatus[x, y].status) numbers++;
+                string[] numbers = data[startIndex + y].Replace("  ", " ").TrimStart(' ').Split(' ');
+                for (int x = 0; x < 5; x++)
+                {
+                    boardNumbersAndStatus[x, y].number = int.Parse(numbers[x]);
+                    boardNumbersAndStatus[x, y].status = false;
+                }
             }
-            if (numbers == 5) return true;
         }
-        for (int y = 0; y < 5; y++)
+
+        /// <summary>
+        /// Checks if number is same and sets Status
+        /// </summary>
+        /// <param name="number"></param>
+        public void CheckIfNumber(int number)
         {
-            int numbers = 0;
-            for (int x = 0; x < 5; x++)
+            for (int y = 0; y < 5; y++)
             {
-                if (boardNumbersAndStatus[x, y].status) numbers++;
+                for (int x = 0; x < 5; x++)
+                {
+                    if (boardNumbersAndStatus[x, y].number == number) boardNumbersAndStatus[x, y].status = true;
+                }
             }
-            if (numbers == 5) return true;
         }
-        return false;
-    }
 
-    /// <summary>
-    /// Gets numbers at position if status is equal
-    /// </summary>
-    /// <param name="x"></param>
-    /// <param name="y"></param>
-    /// <param name="status"></param>
-    /// <returns></returns>
-    public int GetNumberAtIfStatus(int x, int y, bool status)
-    {
-        if (boardNumbersAndStatus[x, y].status == status)
-            return boardNumbersAndStatus[x, y].number;
-        return 0;
-    }
-
-    /// <summary>
-    /// Draws bingo board on screen
-    /// </summary>
-    public void DrawBingo()
-    {
-        for (int y = 0; y < 5; y++)
+        /// <summary>
+        /// Checks rows and columns for bingo
+        /// </summary>
+        /// <returns></returns>
+        public bool BingoCheck()
         {
             for (int x = 0; x < 5; x++)
             {
-                if (boardNumbersAndStatus[x, y].status) Console.ForegroundColor = ConsoleColor.Blue;
-                else Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write($"{boardNumbersAndStatus[x, y].number,2} ");
+                int numbers = 0;
+                for (int y = 0; y < 5; y++)
+                {
+                    if (boardNumbersAndStatus[x, y].status) numbers++;
+                }
+                if (numbers == 5) return true;
             }
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Gray;
+            for (int y = 0; y < 5; y++)
+            {
+                int numbers = 0;
+                for (int x = 0; x < 5; x++)
+                {
+                    if (boardNumbersAndStatus[x, y].status) numbers++;
+                }
+                if (numbers == 5) return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Gets numbers at position if status is equal
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        public int GetNumberAtIfStatus(int x, int y, bool status)
+        {
+            if (boardNumbersAndStatus[x, y].status == status)
+                return boardNumbersAndStatus[x, y].number;
+            return 0;
+        }
+
+        /// <summary>
+        /// Draws bingo board on screen
+        /// </summary>
+        public void DrawBingo()
+        {
+            for (int y = 0; y < 5; y++)
+            {
+                for (int x = 0; x < 5; x++)
+                {
+                    if (boardNumbersAndStatus[x, y].status) Console.ForegroundColor = ConsoleColor.Blue;
+                    else Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write($"{boardNumbersAndStatus[x, y].number,2} ");
+                }
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
         }
     }
 }
