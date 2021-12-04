@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advent-Of-Code-2021-2-1", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advent-Of-Code-2021-2-2", "Advent-Of-Code-2021-2-2\Advent-Of-Code-2021-2-2.csproj", "{99DD0593-7FCA-48BA-A77E-0E514DBB54B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advent-Of-Code-2021-3-1", "Advent-Of-Code-2021-3-1\Advent-Of-Code-2021-3-1.csproj", "{F7781634-E725-479F-9A28-D00E630D6BE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advent-Of-Code-2021-3-1", "Advent-Of-Code-2021-3-1\Advent-Of-Code-2021-3-1.csproj", "{F7781634-E725-479F-9A28-D00E630D6BE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advent-Of-Code-2021-3-2", "Advent-Of-Code-2021-3-2\Advent-Of-Code-2021-3-2.csproj", "{8698F87E-7D4F-441A-B0EE-2677FB1C08CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advent-Of-Code-2021-3-2", "Advent-Of-Code-2021-3-2\Advent-Of-Code-2021-3-2.csproj", "{8698F87E-7D4F-441A-B0EE-2677FB1C08CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advent-Of-Code-2021-4-1", "Advent-Of-Code-2021-4-1\Advent-Of-Code-2021-4-1.csproj", "{844B2F26-1BF2-4B02-9908-9FA9DCC6BBA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{8698F87E-7D4F-441A-B0EE-2677FB1C08CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8698F87E-7D4F-441A-B0EE-2677FB1C08CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8698F87E-7D4F-441A-B0EE-2677FB1C08CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{844B2F26-1BF2-4B02-9908-9FA9DCC6BBA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{844B2F26-1BF2-4B02-9908-9FA9DCC6BBA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{844B2F26-1BF2-4B02-9908-9FA9DCC6BBA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{844B2F26-1BF2-4B02-9908-9FA9DCC6BBA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
