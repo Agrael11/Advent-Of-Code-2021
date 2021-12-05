@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace AdventOfCode.Day5.Puzzle1
+namespace AdventOfCode.Day5.Puzzle2
 {
     /// <summary>
-    /// Main Class for Day 5 - Challange 1 of Advent of Code 2021
+    /// Main Class for Day 5 - Challange 2 of Advent of Code 2021
     /// </summary>
     class Program
     {
@@ -33,7 +33,7 @@ namespace AdventOfCode.Day5.Puzzle1
             {
                 for (int x = 0; x < 1000; x++)
                 {
-                    if (table[x, y] >=2)
+                    if (table[x, y] >= 2)
                     {
                         intersections++;
                     }
@@ -53,21 +53,19 @@ namespace AdventOfCode.Day5.Puzzle1
             int x2 = int.Parse(sides[1].Split(',')[0]);
             int y2 = int.Parse(sides[1].Split(',')[1]);
 
-            if (x1 == x2) //if horizontal
+            if ((x1 == x2) || (y1 == y2) || (Math.Abs(x2 - x1) - Math.Abs(y2 - y1) == 0)) //Horizontal, vertical or 45° diagonal
             {
-                for (int i = y1; i != y2; i += (y2 - y1) / Math.Abs(y2 - y1))
+                int orthoDist = Math.Abs(x2 - x1);
+                if (orthoDist == 0) orthoDist = Math.Abs(y2 - y1);
+                int horizontalOrientation = (x2 - x1) / ((x2 - x1 == 0) ? 1 : Math.Abs(x2 - x1));
+                int verticalOrientation = (y2 - y1) / ((y2 - y1 == 0) ? 1 : Math.Abs(y2 - y1));
+
+                for (int i = 0; i <= orthoDist; i++)
                 {
-                    table[x1, i]++;
+                    int x = (x1 + horizontalOrientation * i);
+                    int y = (y1 + verticalOrientation * i);
+                    table[x, y]++;
                 }
-                table[x1, y2]++;
-            }
-            else if (y1 == y2) //If vertical
-            {
-                for (int i = x1; i != x2; i += (x2 - x1) / Math.Abs(x2 - x1))
-                {
-                    table[i, y1]++;
-                }
-                table[x2, y1]++;
             }
         }
     }
