@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 
 namespace AdventOfCode.Day4.Puzzle2
@@ -20,8 +22,8 @@ namespace AdventOfCode.Day4.Puzzle2
             List<int> numbers;
             SplitNumbersEx(inputData[0], out numbers);
 
-            List<BingoBoard> boards = new List<BingoBoard>();
-            for (int i = 2; i < inputData.Count(); i += 6)
+            List<BingoBoard> boards = new();
+            for (int i = 2; i < inputData.Count; i += 6)
             {
                 boards.Add(new BingoBoard(inputData, i));
             }

@@ -1,4 +1,7 @@
-﻿namespace AdventOfCode.Day4.Puzzle2
+﻿using System;
+using System.Collections.Generic;
+
+namespace AdventOfCode.Day4.Puzzle2
 {
     /// <summary>
     /// Class taking care of Bingo Board related stuff
