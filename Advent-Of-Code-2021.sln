@@ -27,9 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advent-Of-Code-2021-6-1", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advent-Of-Code-2021-6-2", "Advent-Of-Code-2021-6-2\Advent-Of-Code-2021-6-2.csproj", "{A8694831-C14E-4400-A218-849EF075E520}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advent-Of-Code-2021-7-1", "Advent-Of-Code-2021-7-1\Advent-Of-Code-2021-7-1.csproj", "{B26B19E2-2318-4F67-AD51-2F8EFF278A6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advent-Of-Code-2021-7-1", "Advent-Of-Code-2021-7-1\Advent-Of-Code-2021-7-1.csproj", "{B26B19E2-2318-4F67-AD51-2F8EFF278A6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advent-Of-Code-2021-7-2", "Advent-Of-Code-2021-7-2\Advent-Of-Code-2021-7-2.csproj", "{5F10F0EC-CFE6-4ED7-A021-753F3AD08813}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advent-Of-Code-2021-7-2", "Advent-Of-Code-2021-7-2\Advent-Of-Code-2021-7-2.csproj", "{5F10F0EC-CFE6-4ED7-A021-753F3AD08813}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advent-Of-Code-2021-8-1", "Advent-Of-Code-2021-8-1\Advent-Of-Code-2021-8-1.csproj", "{8A8AD623-A13B-4E9A-AA9D-0FE7C971A85E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advent-Of-Code-2021-8-2", "Advent-Of-Code-2021-8-2\Advent-Of-Code-2021-8-2.csproj", "{1D5159AC-6A9D-4A95-A63C-A81E8669519F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +97,14 @@ Global
 		{5F10F0EC-CFE6-4ED7-A021-753F3AD08813}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F10F0EC-CFE6-4ED7-A021-753F3AD08813}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F10F0EC-CFE6-4ED7-A021-753F3AD08813}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A8AD623-A13B-4E9A-AA9D-0FE7C971A85E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A8AD623-A13B-4E9A-AA9D-0FE7C971A85E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A8AD623-A13B-4E9A-AA9D-0FE7C971A85E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A8AD623-A13B-4E9A-AA9D-0FE7C971A85E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D5159AC-6A9D-4A95-A63C-A81E8669519F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D5159AC-6A9D-4A95-A63C-A81E8669519F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D5159AC-6A9D-4A95-A63C-A81E8669519F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D5159AC-6A9D-4A95-A63C-A81E8669519F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
