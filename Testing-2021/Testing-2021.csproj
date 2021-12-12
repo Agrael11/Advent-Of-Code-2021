@@ -16,17 +16,61 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Advent-Of-Code-2021-12-1\Advent-Of-Code-2021-12.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-01\Advent-Of-Code-2021-01.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-02\Advent-Of-Code-2021-02.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-03\Advent-Of-Code-2021-03.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-04\Advent-Of-Code-2021-04.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-05\Advent-Of-Code-2021-05.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-06\Advent-Of-Code-2021-06.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-07\Advent-Of-Code-2021-07.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-08\Advent-Of-Code-2021-08.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-09\Advent-Of-Code-2021-09.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-10\Advent-Of-Code-2021-10.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-11\Advent-Of-Code-2021-11.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-12\Advent-Of-Code-2021-12.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="example12c.txt">
+    <None Update="Examples\Challange02\example02.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="example12b.txt">
+    <None Update="Examples\Challange03\example03.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="example12a.txt">
+    <None Update="Examples\Challange04\example04.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange05\example05.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange01\example01.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange06\example06.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange07\example07.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange09\example09.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange08\example08.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange10\example10.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange11\example11.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange12\example12c.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange12\example12b.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange12\example12a.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
