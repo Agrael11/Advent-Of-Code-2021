@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-
-namespace AdventOfCode.Day12
+﻿namespace AdventOfCode.Day12
 {
     /// <summary>
     /// Main Class for Challange 1
@@ -44,9 +41,7 @@ namespace AdventOfCode.Day12
             //Find all available paths
             List<List<string>> paths = FindPath("start", ref caves, null);
 
-            //Write (and return) their amount.
-            Console.WriteLine($"There is {paths.Count} possible paths.");
-
+            //Return the result
             return paths.Count;
         }
 

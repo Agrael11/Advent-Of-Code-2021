@@ -7,16 +7,14 @@
     {
         static void Main()
         {
-            //Read input data from text file and call Part 1
-            StreamReader sr = new("inputData.txt");
-            string input = sr.ReadToEnd();
-            sr.Close();
+            //Read input data from text file
+            string inputData = File.ReadAllText("inputData.txt");
 
-            //Call Challange 1
-             new Challange1().DoChallange(input);
+            //Do challange 1
+            Console.WriteLine($"Result of Day 12, Challange 1 is:{new Challange1().DoChallange(inputData)}.");
 
-            //Call Challange 2
-            new Challange2().DoChallange(input);
+            //Do challange 2
+            Console.WriteLine($"Result of Day 12, Challange 2 is:{new Challange2().DoChallange(inputData)}.");
         }
     }
 }
