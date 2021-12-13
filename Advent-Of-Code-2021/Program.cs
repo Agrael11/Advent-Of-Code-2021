@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode
+﻿using System.Diagnostics;
+
+namespace AdventOfCode
 {
     /// <summary>
     /// Main Advent of Code 2021 Class
@@ -13,7 +15,7 @@
             while (result != "Q")
             {
                 Console.WriteLine("Advent of Code 2021!");
-                Console.Write("Select the challange [1-12] or all challanges [A], write [Q] to quit: ");
+                Console.Write("Select the challange [1-13] or all challanges [A], write [Q] to quit: ");
                 result = Console.ReadLine()??"";
 
                 switch (result.ToUpper())
@@ -30,6 +32,7 @@
                     case "10":
                     case "11":
                     case "12":
+                    case "13":
                         DoChallange(int.Parse(result));
                         break;
                     case "A":
@@ -54,79 +57,193 @@
                 DrawATree();
             }
             string inputData = File.ReadAllText($"inputData{challange}.txt");
+            Stopwatch watch1;
+            Stopwatch watch2;
             string result1;
             string result2;
             switch (challange)
             {
                 case 1:
+                    watch1 = Stopwatch.StartNew();
                     result1 = new Day01.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = new Day01.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
                     break;
                 case 2:
+                    watch1 = Stopwatch.StartNew();
                     result1 = new Day02.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = new Day02.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
                     break;
                 case 3:
+                    watch1 = Stopwatch.StartNew();
                     result1 = new Day03.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = new Day03.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
                     break;
                 case 4:
+                    watch1 = Stopwatch.StartNew();
                     result1 = new Day04.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = new Day04.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
                     break;
                 case 5:
+                    watch1 = Stopwatch.StartNew();
                     result1 = new Day05.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = new Day05.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
                     break;
                 case 6:
+                    watch1 = Stopwatch.StartNew();
                     result1 = new Day06.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = new Day06.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
                     break;
                 case 7:
+                    watch1 = Stopwatch.StartNew();
                     result1 = new Day07.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = new Day07.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
                     break;
                 case 8:
+                    watch1 = Stopwatch.StartNew();
                     result1 = new Day08.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = new Day08.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
                     break;
                 case 9:
+                    watch1 = Stopwatch.StartNew();
                     result1 = new Day09.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = new Day09.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
                     break;
                 case 10:
+                    watch1 = Stopwatch.StartNew();
                     result1 = new Day10.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = new Day10.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
                     break;
                 case 11:
+                    watch1 = Stopwatch.StartNew();
                     result1 = new Day11.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = new Day11.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
                     break;
                 case 12:
+                    watch1 = Stopwatch.StartNew();
                     result1 = new Day12.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = new Day12.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
+                    break;
+                case 13:
+                    watch1 = Stopwatch.StartNew();
+                    result1 = new Day13.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
+                    result2 = new Day13.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
                     break;
                 default:
+                    watch1 = Stopwatch.StartNew();
                     result1 = "ERROR";
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
                     result2 = "ERROR";
+                    watch2.Stop();
                     break;
             }
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("Results of Day {challange} are: ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(result1);
+            Console.Write($"Results of Day {challange} are: ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            if (result1.Contains('\n') || result1.Length > 20)
+            {
+                Console.WriteLine();
+                Console.WriteLine(result1);
+            }
+            else
+            {
+                Console.Write(result1);
+            }
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write(" and ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(result2);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            if (result2.Contains('\n') || result2.Length > 20)
+            {
+                Console.WriteLine();
+                Console.WriteLine(result2);
+            }
+            else
+            {
+                Console.Write(result2);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("! ");
+            }
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("!");
+            Console.Write("It took ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            uint micro = (uint)(watch1.ElapsedMilliseconds%1000) * 10000 + (uint)(watch2.ElapsedTicks % 10000);
+            uint seconds = (uint)(watch1.ElapsedMilliseconds / 1000);
+            uint minutes = seconds / 60;
+            seconds %= 60;
+            uint hours = minutes / 60;
+            minutes %= 60;
+            string time = "";
+            if (hours > 0) time = hours.ToString().PadLeft(2, '0') + ":";
+            if (minutes > 0 || hours > 0) time += minutes.ToString().PadLeft(2, '0') + ":";
+            if (seconds > 0 || minutes > 0 || hours > 0) time += seconds.ToString().PadLeft(2, '0') + ".";
+            time += micro.ToString();
+            if (micro < 1000) time += " ms";
+            else time += " ts";
+            Console.Write(time);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(" and ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            micro = (uint)(watch2.Elapsed.TotalMilliseconds % 1000)*10000 + (uint)(watch2.ElapsedTicks%10000);
+            seconds = (uint)(watch2.ElapsedMilliseconds / 1000);
+            minutes = seconds / 60;
+            seconds %= 60;
+            hours = minutes / 60;
+            minutes %= 60;
+            time = "";
+            if (hours > 0) time = hours.ToString().PadLeft(2, '0') + ":";
+            if (minutes > 0 || hours > 0) time += minutes.ToString().PadLeft(2, '0') + ":";
+            if (seconds > 0 || minutes > 0 || hours > 0) time += seconds.ToString().PadLeft(2, '0') + ".";
+            time += micro.ToString();
+            if (micro < 1000) time += " ms";
+            else time += " ts";
+            Console.Write(time);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(".");
         }
         
         static void DoAllChallanges()
         {
             DrawATree();
-            for (int i = 1; i <= 12; i++)
+            for (int i = 1; i <= 13; i++)
             {
                 DoChallange(i, false);
             }
@@ -135,7 +252,7 @@
         static void DrawATree()
         {
             Console.Clear();
-            for (int i = 0; i < 40; i++)
+            for (int i = 0; i < Console.WindowWidth/40*Console.WindowHeight; i++)
             {
                 Console.ForegroundColor = (ConsoleColor)new Random().Next(1, 16);
                 int x = new Random().Next(0, Console.WindowWidth);
