@@ -50,7 +50,7 @@ namespace AdventOfCode
             Console.ForegroundColor = ConsoleColor.Gray;
         }
 
-        static void DoChallange(int challange, bool nice = true)
+        static ulong DoChallange(int challange, bool nice = true)
         {
             if (nice)
             {
@@ -205,7 +205,7 @@ namespace AdventOfCode
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("It took ");
             Console.ForegroundColor = ConsoleColor.Green;
-            uint micro = (uint)(watch1.ElapsedMilliseconds%1000) * 10000 + (uint)(watch2.ElapsedTicks % 10000);
+            uint milli = (uint)(watch1.ElapsedMilliseconds%1000);
             uint seconds = (uint)(watch1.ElapsedMilliseconds / 1000);
             uint minutes = seconds / 60;
             seconds %= 60;
@@ -215,14 +215,12 @@ namespace AdventOfCode
             if (hours > 0) time = hours.ToString().PadLeft(2, '0') + ":";
             if (minutes > 0 || hours > 0) time += minutes.ToString().PadLeft(2, '0') + ":";
             if (seconds > 0 || minutes > 0 || hours > 0) time += seconds.ToString().PadLeft(2, '0') + ".";
-            time += micro.ToString();
-            if (micro < 1000) time += " ms";
-            else time += " ts";
+            time += milli.ToString().PadLeft(3, '0') + " ms";
             Console.Write(time);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write(" and ");
             Console.ForegroundColor = ConsoleColor.Green;
-            micro = (uint)(watch2.Elapsed.TotalMilliseconds % 1000)*10000 + (uint)(watch2.ElapsedTicks%10000);
+            milli = (uint)(watch2.Elapsed.TotalMilliseconds % 1000);
             seconds = (uint)(watch2.ElapsedMilliseconds / 1000);
             minutes = seconds / 60;
             seconds %= 60;
@@ -232,21 +230,40 @@ namespace AdventOfCode
             if (hours > 0) time = hours.ToString().PadLeft(2, '0') + ":";
             if (minutes > 0 || hours > 0) time += minutes.ToString().PadLeft(2, '0') + ":";
             if (seconds > 0 || minutes > 0 || hours > 0) time += seconds.ToString().PadLeft(2, '0') + ".";
-            time += micro.ToString();
-            if (micro < 1000) time += " ms";
-            else time += " ts";
+            time += milli.ToString().PadLeft(3, '0') + " ms";
             Console.Write(time);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(".");
+            return (ulong)(watch1.ElapsedMilliseconds + watch2.ElapsedMilliseconds);
         }
         
         static void DoAllChallanges()
         {
             DrawATree();
+            ulong totalTime = 0;
             for (int i = 1; i <= 13; i++)
             {
-                DoChallange(i, false);
+                totalTime += DoChallange(i, false);
             }
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Total time is: ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            uint milli = (uint)(totalTime % 1000);
+            uint seconds = (uint)(totalTime / 1000);
+            uint minutes = seconds / 60;
+            seconds %= 60;
+            uint hours = minutes / 60;
+            minutes %= 60;
+            string time = "";
+            if (hours > 0) time = hours.ToString().PadLeft(2, '0') + ":";
+            if (minutes > 0 || hours > 0) time += minutes.ToString().PadLeft(2, '0') + ":";
+            if (seconds > 0 || minutes > 0 || hours > 0) time += seconds.ToString().PadLeft(2, '0') + ".";
+            time += milli.ToString().PadLeft(3, '0') + " ms";
+            Console.Write(time);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(".");
+            Console.WriteLine();
         }
 
         static void DrawATree()
