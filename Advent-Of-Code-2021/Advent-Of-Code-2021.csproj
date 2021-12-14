@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -22,6 +22,7 @@
     <ProjectReference Include="..\Advent-Of-Code-2021-11\Advent-Of-Code-2021-11.csproj" />
     <ProjectReference Include="..\Advent-Of-Code-2021-12\Advent-Of-Code-2021-12.csproj" />
     <ProjectReference Include="..\Advent-Of-Code-2021-13\Advent-Of-Code-2021-13.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-14\Advent-Of-Code-2021-14.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +39,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="inputData12.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="inputData14.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="inputData2.txt">

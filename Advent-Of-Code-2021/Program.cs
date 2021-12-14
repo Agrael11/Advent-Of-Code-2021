@@ -15,7 +15,7 @@ namespace AdventOfCode
             while (result != "Q")
             {
                 Console.WriteLine("Advent of Code 2021!");
-                Console.Write("Select the challange [1-13] or all challanges [A], write [Q] to quit: ");
+                Console.Write("Select the challange [1-14] or all challanges [A], write [Q] to quit: ");
                 result = Console.ReadLine()??"";
 
                 switch (result.ToUpper())
@@ -33,6 +33,7 @@ namespace AdventOfCode
                     case "11":
                     case "12":
                     case "13":
+                    case "14":
                         DoChallange(int.Parse(result));
                         break;
                     case "A":
@@ -167,6 +168,14 @@ namespace AdventOfCode
                     result2 = new Day13.Challange2().DoChallange(inputData).ToString();
                     watch2.Stop();
                     break;
+                case 14:
+                    watch1 = Stopwatch.StartNew();
+                    result1 = new Day14.Challange1().DoChallange(inputData).ToString();
+                    watch1.Stop();
+                    watch2 = Stopwatch.StartNew();
+                    result2 = new Day14.Challange2().DoChallange(inputData).ToString();
+                    watch2.Stop();
+                    break;
                 default:
                     watch1 = Stopwatch.StartNew();
                     result1 = "ERROR";
@@ -241,7 +250,7 @@ namespace AdventOfCode
         {
             DrawATree();
             ulong totalTime = 0;
-            for (int i = 1; i <= 13; i++)
+            for (int i = 1; i <= 14; i++)
             {
                 totalTime += DoChallange(i, false);
             }
