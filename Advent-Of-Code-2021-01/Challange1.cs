@@ -3,14 +3,14 @@
     /// <summary>
     /// Main Class for Challange 1
     /// </summary>
-    public class Challange1
+    public static class Challange1
     {
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public int DoChallange(string input)
+        public static int DoChallange(string input)
         {
             //Defines Previous Number as first number in the list, and counter of increased items.
             string[] inputData = input.Replace("\r", "").TrimEnd('\n').Split('\n');

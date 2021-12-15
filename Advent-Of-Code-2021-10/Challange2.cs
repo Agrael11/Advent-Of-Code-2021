@@ -3,19 +3,19 @@
     /// <summary>
     /// Main Class for Challange 2
     /// </summary>
-    public class Challange2
+    public static class Challange2
     {
-        static readonly Dictionary<char, ulong> scoreBoard = new() { { ')', 1 }, { ']', 2 }, { '}', 3 }, { '>', 4 } };
+        private static readonly Dictionary<char, ulong> scoreBoard = new() { { ')', 1 }, { ']', 2 }, { '}', 3 }, { '>', 4 } };
 
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public ulong DoChallange(string input)
+        public static ulong DoChallange(string input)
         { 
             //Keep score
-            List<ulong> scores = new List<ulong>();
+            List<ulong> scores = new();
 
             //Look trough all lines.
             string[] inputData = input.Replace("\r", "").TrimEnd('\n').Split('\n');
@@ -33,13 +33,13 @@
                     (char c, int pos) = FindEnding(i, line);
                     if (pos != -1)
                     {
-                        if (isPair(line[i], c)) continue;
+                        if (IsPair(line[i], c)) continue;
                         Console.WriteLine($"It should not get here");
                         break;
                     }
                     else
                     {
-                        char pair = getPair(line[i]);
+                        char pair = GetPair(line[i]);
                         fixString += pair;
                         score *= 5;
                         score += scoreBoard[pair];
@@ -62,7 +62,7 @@
                 if (line[i] == ')' || line[i] == '>' || line[i] == '}' || line[i] == ']') continue;
                 (char c, int pos) = FindEnding(i, line);
                 if (pos == -1) continue;
-                if (isPair(line[i], c)) continue;
+                if (IsPair(line[i], c)) continue;
                 return true;
             }
             return false;
@@ -74,7 +74,7 @@
         /// <param name="opening"></param>
         /// <param name="ending"></param>
         /// <returns></returns>
-        static bool isPair(char opening, char ending)
+        static bool IsPair(char opening, char ending)
         {
             if (opening == '(') return ending == ')';
             if (opening == '[') return ending == ']';
@@ -83,7 +83,7 @@
             return false;
         }
 
-        static char getPair(char opening)
+        static char GetPair(char opening)
         {
             if (opening == '(') return ')';
             if (opening == '[') return ']';

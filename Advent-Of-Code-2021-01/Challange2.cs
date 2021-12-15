@@ -3,14 +3,14 @@
     /// <summary>
     /// Main Class for Challange 2
     /// </summary>
-    public class Challange2
+    public static class Challange2
     {
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public int DoChallange(string input)
+        public static int DoChallange(string input)
         {
             //Defines Previous Sum as Sum of first three element on the list, and counter of increased sums.
             string[] inputData = input.Replace("\r", "").TrimEnd('\n').Split('\n');
@@ -43,17 +43,6 @@
         static int GetSum(int index, ref string[] inputData)
         {
             return int.Parse(inputData[index]) + int.Parse(inputData[index + 1]) + int.Parse(inputData[index + 2]);
-        }
-
-        /// <summary>
-        /// Makes string representing addition of three elements in list, starting at index
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="inputData"></param>
-        /// <returns></returns>
-        static string GetSumText(int index, ref string[] inputData)
-        {
-            return $"{inputData[index]} + {inputData[index + 1]} + {inputData[index + 2]}";
         }
     }
 }

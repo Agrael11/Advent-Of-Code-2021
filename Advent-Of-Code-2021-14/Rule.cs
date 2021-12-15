@@ -5,8 +5,8 @@
     /// </summary>
     public struct Rule
     {
-        public readonly string Origin;
-        public readonly char Target;
+        public readonly string Origin { get; }
+        public readonly char Target { get; }
 
         /// <summary>
         /// Creates one chemical rule

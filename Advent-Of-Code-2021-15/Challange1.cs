@@ -3,13 +3,13 @@
     /// <summary>
     /// Main Class for Challange 1
     /// </summary>
-    public class Challange1
+    public static class Challange1
     {
         private struct Node
         {
-            public int X { get; set; }
-            public int Y { get; set; }
-            public byte Value { get; set; }
+            public int X { get; }
+            public int Y { get; }
+            public byte Value { get; }
             public ulong Distance { get; set; }
             public bool Visited { get; set; } = false;
             public (int x, int y) Connected { get; set; } = (0, 0);
@@ -23,20 +23,20 @@
             }
         }
 
-        private Node[,] nodes = new Node[0, 0];
-        private int Width { get { return nodes.GetLength(0); } }
-        private int Height { get { return nodes.GetLength(1); } }
-        private (int x, int y) current;
-        private (int x, int y) target;
+        private static Node[,] nodes = new Node[0, 0];
+        private static int Width { get { return nodes.GetLength(0); } }
+        private static int Height { get { return nodes.GetLength(1); } }
+        private static (int x, int y) current;
+        private static (int x, int y) target;
 
-        private List<(int x, int y)> toCheck = new List<(int x, int y)>();
+        private static readonly List<(int x, int y)> toCheck = new();
 
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public ulong DoChallange(string input)
+        public static ulong DoChallange(string input)
         {
             //Parse the input into set of chemical bonds (pairs) and rules.
             string[] inputData = input.Replace("\r", "").TrimEnd('\n').Split('\n');
@@ -69,64 +69,22 @@
                 SelectNextCurrent();
             }
 
-
             return nodes[target.x, target.y].Distance;
-        }
-
-        /// <summary>
-        /// Just here to debug -- Draws table
-        /// </summary>
-        private void DrawTable()
-        {
-            Console.CursorLeft = 0;
-            Console.CursorTop = 0;
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            for (int y = 0; y < Height; y++)
-            {
-                for (int x = 0; x < Width; x++)
-                {
-                    Console.Write(nodes[x, y].Value);
-                }
-                Console.WriteLine();
-            }
-            Console.ForegroundColor = ConsoleColor.Gray;
-        }
-
-        /// <summary>
-        /// Just here to debug -- Draws path trough table
-        /// </summary>
-        private void DrawPath()
-        {
-            int originalTop = Console.CursorTop;
-            int originalLeft = Console.CursorLeft;
-            Console.ForegroundColor = ConsoleColor.White;
-            current = target;
-            while (current != (-1, -1))
-            {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.CursorLeft = current.x;
-                Console.CursorTop = current.y;
-                Console.Write(nodes[current.x, current.y].Value);
-                current = nodes[current.x, current.y].Connected;
-            }
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.CursorLeft = originalLeft;
-            Console.CursorTop = originalTop + 1;
         }
 
         /// <summary>
         /// Finds unvisited cell with lowest distance value to check next.
         /// </summary>
-        private void SelectNextCurrent()
+        private static void SelectNextCurrent()
         {
             ulong smallest = ulong.MaxValue;
             (int x, int y) next = (0, 0);
-            foreach ((int x, int y) check in toCheck)
+            foreach ((int x, int y) in toCheck)
             {
-                if ((!nodes[check.x, check.y].Visited) && (nodes[check.x, check.y].Distance < smallest))
+                if ((!nodes[x, y].Visited) && (nodes[x, y].Distance < smallest))
                 {
-                    next = (check.x, check.y);
-                    smallest = nodes[check.x, check.y].Distance;
+                    next = (x, y);
+                    smallest = nodes[x, y].Distance;
                 }
             }
             current = (next.x, next.y);
@@ -135,7 +93,7 @@
         /// <summary>
         /// Compares nodes around current node to find next target node.
         /// </summary>
-        private void CompareNodesAround()
+        private static void CompareNodesAround()
         {
             if (!nodes[current.x, current.y].Visited)
             {
@@ -175,7 +133,7 @@
         /// <param name="y"></param>
         /// <param name="originalX"></param>
         /// <param name="originalY"></param>
-        private void CheckNeighbour(int x, int y, int originalX, int originalY)
+        private static void CheckNeighbour(int x, int y, int originalX, int originalY)
         {
             if (nodes[x, y].Visited)
                 return;

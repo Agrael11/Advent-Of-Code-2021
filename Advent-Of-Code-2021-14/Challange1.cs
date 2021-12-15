@@ -3,14 +3,14 @@
     /// <summary>
     /// Main Class for Challange 1
     /// </summary>
-    public class Challange1
+    public static class Challange1
     {
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public long DoChallange(string input)
+        public static long DoChallange(string input)
         {
             //Parse the input into set of chemical bonds (pairs) and rules.
             string[] inputData = input.Replace("\r", "").TrimEnd('\n').Split('\n');

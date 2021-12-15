@@ -3,17 +3,17 @@
     /// <summary>
     /// Main Class for Challange 2
     /// </summary>
-    public class Challange2
+    public static class Challange2
     {
         //Order in which numbers will be checked
-        private static ushort[] _checkOrderList = { 1, 7, 4, 3, 5, 2, 8, 0, 6, 9 };
+        private static readonly ushort[] _checkOrderList = { 1, 7, 4, 3, 5, 2, 8, 0, 6, 9 };
 
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public int DoChallange(string input)
+        public static int DoChallange(string input)
         {
             //Define total (as starting value 0) and go trough every line of input
             int total = 0;
@@ -148,7 +148,7 @@
                     IdentifyAndProcess1(ref numeralsInfo, ref numerals, ref segments);
                     break;
                 case 2:
-                    IdentifyAndProcess2(ref numeralsInfo, ref numerals, ref segments);
+                    IdentifyAndProcess2(ref numeralsInfo, ref numerals);
                     break;
                 case 3:
                     IdentifyAndProcess3(ref numeralsInfo, ref numerals, ref segments);
@@ -166,7 +166,7 @@
                     IdentifyAndProcess7(ref numeralsInfo, ref numerals, ref segments);
                     break;
                 case 8:
-                    IdentifyAndProcess8(ref numeralsInfo, ref numerals, ref segments);
+                    IdentifyAndProcess8(ref numeralsInfo, ref numerals);
                     break;
                 case 9:
                     IdentifyAndProcess9(ref numeralsInfo, ref numerals, ref segments);
@@ -226,7 +226,7 @@
         /// <param name="numeralsInfo"></param>
         /// <param name="numerals"></param>
         /// <param name="segments"></param>
-        private static void IdentifyAndProcess2(ref List<string> numeralsInfo, ref string[] numerals, ref string[] segments)
+        private static void IdentifyAndProcess2(ref List<string> numeralsInfo, ref string[] numerals)
         {
             foreach (string numeral in numeralsInfo)
             {
@@ -358,7 +358,7 @@
         /// <param name="numeralsInfo"></param>
         /// <param name="numerals"></param>
         /// <param name="segments"></param>
-        private static void IdentifyAndProcess8(ref List<string> numeralsInfo, ref string[] numerals, ref string[] segments)
+        private static void IdentifyAndProcess8(ref List<string> numeralsInfo, ref string[] numerals)
         {
             foreach (string numeral in numeralsInfo)
             {

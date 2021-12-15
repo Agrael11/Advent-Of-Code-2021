@@ -3,14 +3,14 @@
     /// <summary>
     /// Main Class for Challange 2
     /// </summary>
-    public class Challange2
+    public static class Challange2
     {
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public ulong DoChallange(string inputData)
+        public static ulong DoChallange(string inputData)
         {
             //Parse input into caves.
             //Note: Every startpoint is also endpoint of it's endpoint
@@ -57,7 +57,7 @@
         /// <param name="caves"></param>
         /// <param name="Visited"></param>
         /// <returns></returns>
-        private ulong FindPath(string current, ref SortedDictionary<string, Cave> caves, Dictionary<string, bool>? Visited, bool doublevisit = false)
+        private static ulong FindPath(string current, ref SortedDictionary<string, Cave> caves, Dictionary<string, bool>? Visited, bool doublevisit = false)
         {
             //If "end", just list with it and nothing else.
             if (current == "end")

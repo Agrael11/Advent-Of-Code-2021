@@ -3,7 +3,7 @@
     /// <summary>
     /// Main Class for Challange 2
     /// </summary>
-    public class Challange2
+    public static class Challange2
     {
 
         /// <summary>
@@ -11,7 +11,7 @@
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public long DoChallange(string input)
+        public static long DoChallange(string input)
         {
             //Parse the input into set of chemical bonds (pairs) and rules.
             string[] inputData = input.Replace("\r", "").TrimEnd('\n').Split('\n');

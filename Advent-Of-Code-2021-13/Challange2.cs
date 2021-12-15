@@ -3,14 +3,14 @@
     /// <summary>
     /// Main Class for Challange 2
     /// </summary>
-    public class Challange2
+    public static class Challange2
     {
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public string DoChallange(string input)
+        public static string DoChallange(string input)
         {
             //First find max width and height
             string[] inputData = input.Replace("\r", "").TrimEnd('\n').Split('\n');
@@ -47,11 +47,11 @@
             {
                 string instruction = inputData[line].Split('=')[0];
                 int location = int.Parse(inputData[line].Split('=')[1]);
-                if (instruction[instruction.Length - 1] == 'x')
+                if (instruction[^1] == 'x')
                 {
                     FoldTable(ref table, location, 0);
                 }
-                else if (instruction[instruction.Length - 1] == 'y')
+                else if (instruction[^1] == 'y')
                 {
                     FoldTable(ref table, 0, location);
                 }
@@ -89,7 +89,7 @@
         /// <param name="table"></param>
         /// <param name="splitX"></param>
         /// <param name="splitY"></param>
-        public void FoldTable(ref bool[,] table, int splitX, int splitY)
+        private static void FoldTable(ref bool[,] table, int splitX, int splitY)
         {
             int oWidth = table.GetLength(0);
             int oHeight = table.GetLength(1);

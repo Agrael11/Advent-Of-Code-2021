@@ -3,14 +3,14 @@
     /// <summary>
     /// Main Class for Challange 1
     /// </summary>
-    public class Challange1
+    public static class Challange1
     {
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public int DoChallange(string inputData)
+        public static int DoChallange(string inputData)
         {
             //Parse input into caves.
             //Note: Every startpoint is also endpoint of it's endpoint
@@ -52,7 +52,7 @@
         /// <param name="caves"></param>
         /// <param name="Visited"></param>
         /// <returns></returns>
-        private List<List<string>> FindPath(string current, ref Dictionary<string, Cave> caves, List<string>? Visited)
+        private static List<List<string>> FindPath(string current, ref Dictionary<string, Cave> caves, List<string>? Visited)
         {
             //If small cave, remember her as visited, also prepare output list
             if (Visited == null) Visited = new List<string>();

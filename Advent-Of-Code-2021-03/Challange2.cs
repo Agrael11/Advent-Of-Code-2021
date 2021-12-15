@@ -3,14 +3,14 @@
     /// <summary>
     /// Main Class for Challange 2
     /// </summary>
-    public class Challange2
+    public static class Challange2
     {
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public long DoChallange(string input)
+        public static long DoChallange(string input)
         {
             //Initialize oxygen and CO2 rating values to 0
             int oxygenRating = 0;

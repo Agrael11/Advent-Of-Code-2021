@@ -3,16 +3,16 @@
     /// <summary>
     /// Main Class for Challange 1
     /// </summary>
-    public class Challange1
+    public static class Challange1
     {
-        static readonly Dictionary<char, int> scoreBoard = new() { { ')', 3 }, { ']', 57 }, { '}', 1197 }, { '>', 25137 } };
+        private static readonly Dictionary<char, int> scoreBoard = new() { { ')', 3 }, { ']', 57 }, { '}', 1197 }, { '>', 25137 } };
 
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public int DoChallange(string input)
+        public static int DoChallange(string input)
         {
             //Keep score
             int score = 0;
@@ -26,7 +26,7 @@
                     if (line[i] == ')' || line[i] == '>' || line[i] == '}' || line[i] == ']') continue;
                     (char c, int pos) = FindEnding(i, line);
                     if (pos == -1) continue;
-                    if (isPair(line[i], c)) continue;
+                    if (IsPair(line[i], c)) continue;
                     score += scoreBoard[c];
                     break;
                 }
@@ -42,7 +42,7 @@
         /// <param name="opening"></param>
         /// <param name="ending"></param>
         /// <returns></returns>
-        static bool isPair(char opening, char ending)
+        static bool IsPair(char opening, char ending)
         {
             if (opening == '(') return ending == ')';
             if (opening == '[') return ending == ']';

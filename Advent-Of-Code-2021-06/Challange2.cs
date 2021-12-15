@@ -3,17 +3,17 @@
     /// <summary>
     /// Main Class for Challange 2
     /// </summary>
-    public class Challange2
+    public static class Challange2
     {
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public long DoChallange(string input)
+        public static long DoChallange(string input)
         {
             //Parse data into jellyfishes
-            List<long> jellyfish = new List<long>();
+            List<long> jellyfish = new();
 
             string[] inputData = input.Replace("\r", "").TrimEnd('\n').Split('\n');
             for (int i = 0; i <= 9; i++)

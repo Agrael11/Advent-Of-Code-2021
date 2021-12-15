@@ -3,16 +3,14 @@
     /// <summary>
     /// Main Class for Challange 1
     /// </summary>
-    public class Challange1
+    public static class Challange1
     {
-        static readonly Dictionary<char, int> scoreBoard = new() { { ')', 3 }, { ']', 57 }, { '}', 1197 }, { '>', 25137 } };
-
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public int DoChallange(string input)
+        public static int DoChallange(string input)
         {
             //Get Width and Height & Parse HeightMap data
             string[] inputData = input.Replace("\r", "").TrimEnd('\n').Split('\n');
