@@ -3,18 +3,20 @@
     /// <summary>
     /// Main Class for Challange 2
     /// </summary>
-    public class Challange2
+    public static class Challange2
     {
-        readonly static int maxSteps = 1000000;
-        static ulong flashes = 0;
+        private static readonly int maxSteps = 1000000;
+        private static ulong flashes = 0;
 
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public int DoChallange(string input)
+        public static int DoChallange(string input)
         {
+            flashes = 0;
+
             //Read input data from text file and splits them by line
             string[] inputData = input.Replace("\r", "").TrimEnd('\n').Split('\n');
 
@@ -73,7 +75,7 @@
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="table"></param>
-        static void IncreaseAndPulse(int x, int y, ref int[,] table)
+        private static void IncreaseAndPulse(int x, int y, ref int[,] table)
         {
             int tableWidth = table.GetLength(0);
             int tableHeight = table.GetLength(1);

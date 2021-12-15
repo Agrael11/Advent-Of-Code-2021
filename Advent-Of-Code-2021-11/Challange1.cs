@@ -3,18 +3,20 @@
     /// <summary>
     /// Main Class for Challange 1
     /// </summary>
-    public class Challange1
+    public static class Challange1
     {
-        readonly static int steps = 100;
-        static ulong flashes = 0;
+        private readonly static int steps = 100;
+        private static ulong flashes = 0;
 
         /// <summary>
         /// This is the Main function
         /// </summary>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        public ulong DoChallange(string input)
+        public static ulong DoChallange(string input)
         {
+            flashes = 0;
+
             //Parse input into table
             string[] inputData = input.Replace("\r", "").TrimEnd('\n').Split('\n');
             
@@ -62,7 +64,7 @@
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="table"></param>
-        static void IncreaseAndPulse(int x, int y, ref int[,] table)
+        private static void IncreaseAndPulse(int x, int y, ref int[,] table)
         {
             int tableWidth = table.GetLength(0);
             int tableHeight = table.GetLength(1);
