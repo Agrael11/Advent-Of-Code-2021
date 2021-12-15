@@ -25,7 +25,6 @@ namespace AdventOfCode
                 else if (result.ToUpper() == "A")
                 {
                     DoAllChallanges();
-                    break;
                 }
                 else if (result.ToUpper() != "Q")
                 {
