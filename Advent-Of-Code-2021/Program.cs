@@ -15,10 +15,10 @@ namespace AdventOfCode
             while (result != "Q")
             {
                 Console.WriteLine("Advent of Code 2021!");
-                Console.Write("Select the challange [1-15] or all challanges [A], write [Q] to quit: ");
+                Console.Write("Select the challange [1-16] or all challanges [A], write [Q] to quit: ");
                 result = Console.ReadLine() ?? "";
 
-                if (int.TryParse(result, out int parsed) && parsed >= 1 && parsed <= 15)
+                if (int.TryParse(result, out int parsed) && parsed >= 1 && parsed <= 16)
                 {
                     DoChallange(parsed);
                 }
@@ -55,99 +55,108 @@ namespace AdventOfCode
 
         static ulong DoChallange(int challange, bool nice = true)
         {
-            if (nice)
+            if (File.Exists($"inputData{challange}.txt"))
             {
-                DrawATree();
-            }
-            string inputData = File.ReadAllText($"inputData{challange}.txt");
-            Stopwatch watch1;
-            Stopwatch watch2;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write($"Results of Day {challange} are: ");
-            watch1 = Stopwatch.StartNew();
-            string result1 = challange switch
-            {
-                1 => Day01.Challange1.DoChallange(inputData).ToString(),
-                2 => Day02.Challange1.DoChallange(inputData).ToString(),
-                3 => Day03.Challange1.DoChallange(inputData).ToString(),
-                4 => Day04.Challange1.DoChallange(inputData).ToString(),
-                5 => Day05.Challange1.DoChallange(inputData).ToString(),
-                6 => Day06.Challange1.DoChallange(inputData).ToString(),
-                7 => Day07.Challange1.DoChallange(inputData).ToString(),
-                8 => Day08.Challange1.DoChallange(inputData).ToString(),
-                9 => Day09.Challange1.DoChallange(inputData).ToString(),
-                10 => Day10.Challange1.DoChallange(inputData).ToString(),
-                11 => Day11.Challange1.DoChallange(inputData).ToString(),
-                12 => Day12.Challange1.DoChallange(inputData).ToString(),
-                13 => Day13.Challange1.DoChallange(inputData).ToString(),
-                14 => Day14.Challange1.DoChallange(inputData).ToString(),
-                15 => Day15.Challange1.DoChallange(inputData).ToString(),
-                _ => "ERROR",
-            };
-            watch1.Stop();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            if (result1.Contains('\n') || result1.Length > 20)
-            {
-                Console.WriteLine();
-                Console.WriteLine(result1);
-            }
-            else
-            {
-                Console.Write(result1);
-            }
-            Console.ForegroundColor = ConsoleColor.White;
-            watch2 = Stopwatch.StartNew();
-            string result2 = challange switch
-            {
-                1 => Day01.Challange2.DoChallange(inputData).ToString(),
-                2 => Day02.Challange2.DoChallange(inputData).ToString(),
-                3 => Day03.Challange2.DoChallange(inputData).ToString(),
-                4 => Day04.Challange2.DoChallange(inputData).ToString(),
-                5 => Day05.Challange2.DoChallange(inputData).ToString(),
-                6 => Day06.Challange2.DoChallange(inputData).ToString(),
-                7 => Day07.Challange2.DoChallange(inputData).ToString(),
-                8 => Day08.Challange2.DoChallange(inputData).ToString(),
-                9 => Day09.Challange2.DoChallange(inputData).ToString(),
-                10 => Day10.Challange2.DoChallange(inputData).ToString(),
-                11 => Day11.Challange2.DoChallange(inputData).ToString(),
-                12 => Day12.Challange2.DoChallange(inputData).ToString(),
-                13 => Day13.Challange2.DoChallange(inputData).ToString(),
-                14 => Day14.Challange2.DoChallange(inputData).ToString(),
-                15 => Day15.Challange2.DoChallange(inputData).ToString(),
-                _ => "ERROR",
-            };
-            watch2.Stop();
-            Console.Write(" and ");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            if (result2.Contains('\n') || result2.Length > 20)
-            {
-                Console.WriteLine();
-                Console.WriteLine(result2);
-            }
-            else
-            {
-                Console.Write(result2);
+                if (nice)
+                {
+                    DrawATree();
+                }
+                string inputData = File.ReadAllText($"inputData{challange}.txt");
+                Stopwatch watch1;
+                Stopwatch watch2;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("! ");
+                Console.Write($"Results of Day {challange} are: ");
+                watch1 = Stopwatch.StartNew();
+                string result1 = challange switch
+                {
+                    1 => Day01.Challange1.DoChallange(inputData).ToString(),
+                    2 => Day02.Challange1.DoChallange(inputData).ToString(),
+                    3 => Day03.Challange1.DoChallange(inputData).ToString(),
+                    4 => Day04.Challange1.DoChallange(inputData).ToString(),
+                    5 => Day05.Challange1.DoChallange(inputData).ToString(),
+                    6 => Day06.Challange1.DoChallange(inputData).ToString(),
+                    7 => Day07.Challange1.DoChallange(inputData).ToString(),
+                    8 => Day08.Challange1.DoChallange(inputData).ToString(),
+                    9 => Day09.Challange1.DoChallange(inputData).ToString(),
+                    10 => Day10.Challange1.DoChallange(inputData).ToString(),
+                    11 => Day11.Challange1.DoChallange(inputData).ToString(),
+                    12 => Day12.Challange1.DoChallange(inputData).ToString(),
+                    13 => Day13.Challange1.DoChallange(inputData).ToString(),
+                    14 => Day14.Challange1.DoChallange(inputData).ToString(),
+                    15 => Day15.Challange1.DoChallange(inputData).ToString(),
+                    16 => Day16.Challange1.DoChallange(inputData).ToString(),
+                    _ => "ERROR",
+                };
+                watch1.Stop();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                if (result1.Contains('\n') || result1.Length > 20)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(result1);
+                }
+                else
+                {
+                    Console.Write(result1);
+                }
+                Console.ForegroundColor = ConsoleColor.White;
+                watch2 = Stopwatch.StartNew();
+                string result2 = challange switch
+                {
+                    1 => Day01.Challange2.DoChallange(inputData).ToString(),
+                    2 => Day02.Challange2.DoChallange(inputData).ToString(),
+                    3 => Day03.Challange2.DoChallange(inputData).ToString(),
+                    4 => Day04.Challange2.DoChallange(inputData).ToString(),
+                    5 => Day05.Challange2.DoChallange(inputData).ToString(),
+                    6 => Day06.Challange2.DoChallange(inputData).ToString(),
+                    7 => Day07.Challange2.DoChallange(inputData).ToString(),
+                    8 => Day08.Challange2.DoChallange(inputData).ToString(),
+                    9 => Day09.Challange2.DoChallange(inputData).ToString(),
+                    10 => Day10.Challange2.DoChallange(inputData).ToString(),
+                    11 => Day11.Challange2.DoChallange(inputData).ToString(),
+                    12 => Day12.Challange2.DoChallange(inputData).ToString(),
+                    13 => Day13.Challange2.DoChallange(inputData).ToString(),
+                    14 => Day14.Challange2.DoChallange(inputData).ToString(),
+                    15 => Day15.Challange2.DoChallange(inputData).ToString(),
+                    16 => Day16.Challange2.DoChallange(inputData).ToString(),
+                    _ => "ERROR",
+                };
+                watch2.Stop();
+                Console.Write(" and ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                if (result2.Contains('\n') || result2.Length > 20)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(result2);
+                }
+                else
+                {
+                    Console.Write(result2);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("! ");
+                }
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("It took ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(FormatTime((ulong)watch1.Elapsed.TotalMilliseconds));
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write(" and ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(FormatTime((ulong)watch2.Elapsed.TotalMilliseconds));
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(".");
+                return (ulong)(watch1.ElapsedMilliseconds + watch2.ElapsedMilliseconds);
             }
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("It took ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(FormatTime((ulong)watch1.Elapsed.TotalMilliseconds));
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(" and ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(FormatTime((ulong)watch2.Elapsed.TotalMilliseconds));
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(".");
-            return (ulong)(watch1.ElapsedMilliseconds + watch2.ElapsedMilliseconds);
+            else
+            {
+                return 0;
+            }
         }
         
         static void DoAllChallanges()
         {
             DrawATree();
             ulong totalTime = 0;
-            for (int i = 1; i <= 15; i++)
+            for (int i = 1; i <= 25; i++)
             {
                 totalTime += DoChallange(i, false);
             }
