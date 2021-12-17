@@ -25,6 +25,7 @@
     <ProjectReference Include="..\Advent-Of-Code-2021-14\Advent-Of-Code-2021-14.csproj" />
     <ProjectReference Include="..\Advent-Of-Code-2021-15\Advent-Of-Code-2021-15.csproj" />
     <ProjectReference Include="..\Advent-Of-Code-2021-16\Advent-Of-Code-2021-16.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-17\Advent-Of-Code-2021-17.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +51,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="inputData16.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="inputData17.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="inputData2.txt">
