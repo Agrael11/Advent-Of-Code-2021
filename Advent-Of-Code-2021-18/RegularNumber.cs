@@ -3,7 +3,9 @@
     public class RegularNumber : SnailfishNumber
     {
         public int Number;
-        public new bool IsRegular { get { return true; } }
+#pragma warning disable CA1822 // Mark members as static
+        public new bool IsRegular => true;
+#pragma warning restore CA1822 // Mark members as static
 
 
         public RegularNumber(int number)
