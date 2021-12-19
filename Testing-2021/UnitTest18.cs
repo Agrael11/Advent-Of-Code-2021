@@ -16,14 +16,14 @@ namespace Testing_2021
         public void TestPart1()
         {
             var result = AdventOfCode.Day18.Challange1.DoChallange(example);
-            Assert.IsTrue(result == 4140, $"Incorrect result! Expected:45, Got:{result}");
+            Assert.IsTrue(result == 4140, $"Incorrect result! Expected:4140, Got:{result}");
         }
 
         [TestMethod]
         public void TestPart2()
         {
             var result = AdventOfCode.Day18.Challange2.DoChallange(example);
-            Assert.IsTrue(result == 3993, $"Incorrect result! Expected:112, Got:{result}");
+            Assert.IsTrue(result == 3993, $"Incorrect result! Expected:3993, Got:{result}");
         }
     }
 }

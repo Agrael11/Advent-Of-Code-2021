@@ -3,7 +3,7 @@
     /// <summary>
     /// Main Class for Challange 1
     /// </summary>
-    public static partial class Challange1
+    public static class Challange1
     {
 
         /// <summary>

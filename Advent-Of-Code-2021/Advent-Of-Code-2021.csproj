@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Advent_Of_Code_2021</RootNamespace>
+    <RootNamespace>AdventOfCode</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -27,6 +27,7 @@
     <ProjectReference Include="..\Advent-Of-Code-2021-16\Advent-Of-Code-2021-16.csproj" />
     <ProjectReference Include="..\Advent-Of-Code-2021-17\Advent-Of-Code-2021-17.csproj" />
     <ProjectReference Include="..\Advent-Of-Code-2021-18\Advent-Of-Code-2021-18.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-19\Advent-Of-Code-2021-19.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,6 +59,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="inputData18.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="inputData19.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="inputData2.txt">
