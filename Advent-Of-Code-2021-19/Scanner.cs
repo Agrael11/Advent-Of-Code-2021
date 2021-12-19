@@ -16,8 +16,18 @@ namespace AdventOfCode.Day19
         public Vector3 RealPosition = Vector3.Zero;
         public (Vector3.Direction forward, Vector3.Direction up) Rotation = (Vector3.Direction.Forward, Vector3.Direction.Up);
         public bool Baked { get; set; }
-
         public int ID { get; set; }
+
+        public Scanner Clone()
+        {
+            Scanner newScanner = new(ID);
+            newScanner.Beacons.AddRange(Beacons);
+            newScanner.Position = Position;
+            newScanner.RealPosition = RealPosition;
+            newScanner.Rotation = Rotation;
+            newScanner.Baked = Baked;
+            return newScanner;
+        }
 
         public Scanner(int id)
         {
@@ -68,23 +78,74 @@ namespace AdventOfCode.Day19
         }
 
         /// <summary>
-        /// Find overlapping beacons between two sensors, with various rotations and position shifts
-        /// If at least 12 overlaps happen, bake position and rotation into second sensor.
+        /// Find overlapping beacons of selected beacon
+        /// 
+        /// This is slow and sad
+        /// </summary>
+        /// <param name="scanner1"></param>
+        /// <param name="scanner2"></param>
+        /// <returns></returns>
+        public static (int maxOverlaps, Scanner scanner, Vector3 position, (Vector3.Direction forward, Vector3.Direction up) direction)
+            Check(Vector3 beacon, Scanner scanner1, Scanner scanner2, Vector3.Direction forward, Vector3.Direction up)
+        {
+            int maxOverlaps = 0;
+            Vector3 position = Vector3.Zero;
+            Scanner scanner = new(-1);
+            (Vector3.Direction forward, Vector3.Direction up) direction = (Vector3.Direction.Up, Vector3.Direction.Up);
+
+            Scanner newScanner = scanner2.Clone();
+            newScanner.Baked = scanner.Baked;
+            newScanner.Position = Vector3.Zero;
+            newScanner.Rotation = (forward, up);
+            List<Vector3> translatedOther = newScanner.TranslatedBeacons;
+            for (int otherBeacon = 0; otherBeacon < translatedOther.Count; otherBeacon++)
+            {
+                Vector3 offset = translatedOther[otherBeacon] - beacon;
+                newScanner.Position = offset;
+                int overlaps = 0;
+                List<Vector3> translatedNew = newScanner.TranslatedBeacons;
+                foreach (Vector3 originalBeacon in scanner1.Beacons)
+                {
+                    for (int newOther = 0; newOther < translatedNew.Count; newOther++)
+                    {
+                        if (originalBeacon.Equals(translatedNew[newOther]))
+                        {
+                            overlaps++;
+                        }
+                    }
+                }
+                if (overlaps > maxOverlaps)
+                {
+                    maxOverlaps = overlaps;
+                    scanner = scanner2;
+                    position = newScanner.Position;
+                    direction = newScanner.Rotation;
+                }
+            }
+
+            return (maxOverlaps, scanner, position, direction);
+        }
+
+        /// <summary>
+        /// Find overlapping beacons between two scanners, with various rotations and position shifts
+        /// If at least 12 overlaps happen, bake position and rotation into second scanner.
         /// Return amount of overlaps (unnecessary, but nice for debugging)
         /// 
         /// This is slow and sad
         /// </summary>
-        /// <param name="sensor1"></param>
-        /// <param name="sensor2"></param>
+        /// <param name="scanner1"></param>
+        /// <param name="scanner2"></param>
         /// <returns></returns>
-        public static int FindMaxOverlaps(Scanner sensor1, Scanner sensor2)
+        public static async Task<int> FindMaxOverlaps(Scanner scanner1, Scanner scanner2)
         {
             int maxOverlaps = 0;
             Vector3 position = Vector3.Zero;
-            Scanner sensor = new(-1);
+            Scanner scanner = new(-1);
             (Vector3.Direction forward, Vector3.Direction up) direction =(Vector3.Direction.Up, Vector3.Direction.Up);
 
-            foreach (Vector3 beacon in sensor1.Beacons)
+            List<Task<(int maxOverlaps, Scanner scanner, Vector3 position, (Vector3.Direction forward, Vector3.Direction up) direction)>> tasks = new();
+
+            foreach (Vector3 beacon in scanner1.Beacons)
             {
                 foreach (Vector3.Direction forward in Enum.GetValues(typeof(Vector3.Direction)))
                 {
@@ -108,47 +169,32 @@ namespace AdventOfCode.Day19
                                         continue;
                                     break;
                         }
-                        sensor2.Position = Vector3.Zero;
-                        sensor2.Rotation = (forward, up);
-                        List<Vector3> translatedOther = sensor2.TranslatedBeacons;
-                        List<int> checkedList = new();
-                        for (int otherBeacon = 0; otherBeacon < translatedOther.Count; otherBeacon++)
-                        {
-                            if (checkedList.Contains(otherBeacon))
-                                continue;
-                            Vector3 offset = translatedOther[otherBeacon] - beacon;
-                            sensor2.Position = offset;
-                            int overlaps = 0;
-                            List<Vector3> translatedNew = sensor2.TranslatedBeacons;
-                            foreach (Vector3 originalBeacon in sensor1.Beacons)
-                            {
-                                for (int newOther = 0; newOther < translatedNew.Count; newOther++)
-                                {
-                                    if (originalBeacon.Equals(translatedNew[newOther]))
-                                    {
-                                        if (!checkedList.Contains(newOther))
-                                            checkedList.Add(newOther);
-                                        overlaps++;
-                                    }
-                                }
-                            }
-                            if (overlaps > maxOverlaps)
-                            {
-                                maxOverlaps = overlaps;
-                                sensor = sensor2;
-                                position = sensor2.Position;
-                                direction = sensor2.Rotation;
-                            }
-                        }
+                        Task<(int maxOverlaps, Scanner scanner, Vector3 position, (Vector3.Direction forward, Vector3.Direction up) direction)>
+                            task = Task.Run (()=>{ return Check(beacon, scanner1, scanner2, forward, up); });
+                        tasks.Add(task);
                     }
+                }
+            }
+
+            Task.WaitAll(tasks.ToArray());
+
+            foreach (var resultTask in tasks)
+            {
+                var result = resultTask.Result;
+                if (result.maxOverlaps > maxOverlaps)
+                {
+                    maxOverlaps = result.maxOverlaps;
+                    position = result.position;
+                    scanner = result.scanner;
+                    direction = result.direction;
                 }
             }
 
             if (maxOverlaps >= 12)
             {
-                sensor.Position = position;
-                sensor.Rotation = direction;
-                sensor.BakeTranslation();
+                scanner.Position = position;
+                scanner.Rotation = direction;
+                scanner.BakeTranslation();
             }
 
             return maxOverlaps;

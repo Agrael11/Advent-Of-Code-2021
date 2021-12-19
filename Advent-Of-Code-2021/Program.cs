@@ -11,12 +11,19 @@ namespace AdventOfCode
         {
             DrawATree();
             Console.ForegroundColor = ConsoleColor.White;
-            string result = "";
+            string result = ""; 
             while (result != "Q")
             {
                 Console.WriteLine("Advent of Code 2021!");
                 Console.Write("Select the challange [1-19] or all challanges [A], write [Q] to quit: ");
+#if SPECIALDEBUG
+                if (result != "19")
+                    result = "19";
+                else
+                    result = "Q";
+#else
                 result = Console.ReadLine() ?? "";
+#endif
 
                 if (int.TryParse(result, out int parsed) && parsed >= 1 && parsed <= 19)
                 {

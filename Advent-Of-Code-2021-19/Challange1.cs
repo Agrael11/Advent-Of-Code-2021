@@ -14,7 +14,7 @@
         {
             //Parse Input Data
             input = input.Replace("\r", "").TrimEnd('\n');
-            List<Scanner> sensors = new();
+            List<Scanner> scanners = new();
 
             foreach (string line in input.Split('\n'))
             {
@@ -25,50 +25,52 @@
 
                 if (line.StartsWith("---"))
                 {
-                    sensors.Add(new Scanner(sensors.Count));
+                    scanners.Add(new Scanner(scanners.Count));
                     continue;
                 }
 
                 string[] vectorData = line.Split(',');
                 Vector3 vector = new(int.Parse(vectorData[0]), int.Parse(vectorData[1]), int.Parse(vectorData[2]));
-                sensors[^1].Beacons.Add(vector);
+                scanners[^1].Beacons.Add(vector);
             }
 
-            //Make list of final beacons, containing beacons from first sensor for start
-            sensors[0].Baked = true;
+            //Make list of final beacons, containing beacons from first scanner for start
+            scanners[0].Baked = true;
             List<Vector3> finalBeacons = new();
-            finalBeacons.AddRange(sensors[0].Beacons);
-            //Make list of sensors to be checked (in backwards order bcs will be removing from the list)
+            finalBeacons.AddRange(scanners[0].Beacons);
+            //Make list of scanners to be checked (in backwards order bcs will be removing from the list)
             List<int> notChecked = new();
-            for (int i = sensors.Count - 1; i >= 0; i--)
+            for (int i = scanners.Count - 1; i >= 0; i--)
             {
                 notChecked.Add(i);
             }
 
-            //Do until all sensors are not baked
-            while (!AllBaked(sensors))
+            //Do until all scanners are not baked
+            while (!AllBaked(scanners))
             {
-                //for every sensor in list (backwards bcs removing)
+                //for every scanner in list (backwards bcs removing)
                 for (int ni = notChecked.Count-1; ni >= 0; ni--)
                 {
-                    //If sensor is not baked, ignore
+                    //If scanner is not baked, ignore
                     int i = notChecked[ni];
-                    if (!sensors[i].Baked)
+                    if (!scanners[i].Baked)
                         continue;
-                    //remove sensor from list to be checked and compare it with eeevery known sensor
+                    //remove scanner from list to be checked and compare it with eeevery known scanner
                     notChecked.RemoveAt(ni);
-                    for (int j = 0; j < sensors.Count; j++)
+                    for (int j = 0; j < scanners.Count; j++)
                     {
-                        //If the sensor is not baked and it's different sensor to first one check for overlaps
+                        //If the scanner is not baked and it's different scanner to first one check for overlaps
                         if (i == j)
                             continue;
-                        if (sensors[j].Baked)
+                        if (scanners[j].Baked)
                             continue;
-                        Scanner.FindMaxOverlaps(sensors[i], sensors[j]);
+                        Task task = Scanner.FindMaxOverlaps(scanners[i], scanners[j]);
+                        if (task.Status == TaskStatus.Running)
+                        task.Wait();
                         //If baked after finishing, add it's beacons into final list.
-                        if (sensors[j].Baked)
+                        if (scanners[j].Baked)
                         {
-                            foreach (Vector3 beacon in sensors[j].Beacons)
+                            foreach (Vector3 beacon in scanners[j].Beacons)
                             {
                                 if (!finalBeacons.Contains(beacon))
                                 {
@@ -76,9 +78,9 @@
                                 }
                             }
                         }
-                        if (AllBaked(sensors)) break;
+                        if (AllBaked(scanners)) break;
                     }
-                    if (AllBaked(sensors)) break;
+                    if (AllBaked(scanners)) break;
                 }
             }
 
@@ -86,15 +88,15 @@
         }
 
         /// <summary>
-        /// Check if all sensors are baked
+        /// Check if all scanners are baked
         /// </summary>
-        /// <param name="sensors"></param>
+        /// <param name="scanners"></param>
         /// <returns></returns>
-        private static bool AllBaked(List<Scanner> sensors)
+        private static bool AllBaked(List<Scanner> scanners)
         {
-            foreach (Scanner sensor in sensors)
+            foreach (Scanner scanner in scanners)
             {
-                if (!sensor.Baked) return false;
+                if (!scanner.Baked) return false;
             }
             return true;
         }
