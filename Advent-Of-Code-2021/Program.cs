@@ -15,17 +15,18 @@ namespace AdventOfCode
             while (result != "Q")
             {
                 Console.WriteLine("Advent of Code 2021!");
-                Console.Write("Select the challange [1-19] or all challanges [A], write [Q] to quit: ");
-#if SPECIALDEBUG
-                if (result != "19")
-                    result = "19";
+                Console.Write("Select the challange [1-20] or all challanges [A], write [Q] to quit: ");
+#if DEBUG
+                if (result != "20")
+                    result = "20";
                 else
                     result = "Q";
+                Console.WriteLine(result);
 #else
                 result = Console.ReadLine() ?? "";
 #endif
 
-                if (int.TryParse(result, out int parsed) && parsed >= 1 && parsed <= 19)
+                if (int.TryParse(result, out int parsed) && parsed >= 1 && parsed <= 20)
                 {
                     DoChallange(parsed);
                 }
@@ -95,6 +96,7 @@ namespace AdventOfCode
                     17 => Day17.Challange1.DoChallange(inputData).ToString(),
                     18 => Day18.Challange1.DoChallange(inputData).ToString(),
                     19 => Day19.Challange1.DoChallange(inputData).ToString(),
+                    20 => Day20.Challange1.DoChallange(inputData).ToString(),
                     _ => "ERROR",
                 };
                 watch1.Stop();
@@ -131,6 +133,7 @@ namespace AdventOfCode
                     17 => Day17.Challange2.DoChallange(inputData).ToString(),
                     18 => Day18.Challange2.DoChallange(inputData).ToString(),
                     19 => Day19.Challange2.DoChallange(inputData).ToString(),
+                    20 => Day20.Challange2.DoChallange(inputData).ToString(),
                     _ => "ERROR",
                 };
                 watch2.Stop();
