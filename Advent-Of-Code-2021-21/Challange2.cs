@@ -1,7 +1,7 @@
 ﻿namespace AdventOfCode.Day21
 {
     /// <summary>
-    /// Main Class for Challange 2
+    /// Main Class for Challange 2 -- Thanks u/ArrekinPL for help!!
     /// </summary>
     public static class Challange2
     {

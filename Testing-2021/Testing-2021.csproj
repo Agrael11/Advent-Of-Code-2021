@@ -37,6 +37,8 @@
     <ProjectReference Include="..\Advent-Of-Code-2021-19\Advent-Of-Code-2021-19.csproj" />
     <ProjectReference Include="..\Advent-Of-Code-2021-20\Advent-Of-Code-2021-20.csproj" />
     <ProjectReference Include="..\Advent-Of-Code-2021-21\Advent-Of-Code-2021-21.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021-22\Advent-Of-Code-2021-22.csproj" />
+    <ProjectReference Include="..\Advent-Of-Code-2021\Advent-Of-Code-2021.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -80,6 +82,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Examples\Challange12\example12a.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange22\example22a.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange22\example22c.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\Challange22\example22b.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Examples\Challange21\example21.txt">
